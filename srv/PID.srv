@@ -1,0 +1,14 @@
+float64 kp
+float64 ki
+float64 kd
+float64 current_val
+float64 target_val
+float64 previous_error
+float64 previous_integrator_val
+float64 integral_term_min
+float64 integral_term_max
+float64 dt
+---
+float64 output
+float64 current_integrator_val
+float64 current_error
