@@ -1,23 +1,22 @@
-cmake_minimum_required (VERSION 2.4.6)
-include ($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+project(pid_server)
 
-# Initialize the ROS build system.
-rosbuild_init ()
+find_package(catkin REQUIRED COMPONENTS message_generation roscpp std_msgs)
 
-# Set the default path for built executables to the "bin" directory.
-set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+add_service_files(FILES PID.srv)
 
-# Set the name to use for the executable.
-set (BINNAME pidserver)
+generate_messages(DEPENDENCIES std_msgs)
 
-# Set the source files to use with the executable.
-set (SRCS ${SRCS} src/pid.cpp)
+catkin_package(CATKIN_DEPENDS message_runtime roscpp std_msgs)
 
-# Have ROS autogenerate code used in messages.
-rosbuild_gensrv ()
+include_directories(${catkin_INCLUDE_DIRS})
 
-# Set the directories where include files can be found.
-include_directories (include)
+add_executable(${PROJECT_NAME} src/pid.cpp)
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
+add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_generate_messages_cpp)
 
-# Build the executable that will be used to run this node.
-rosbuild_add_executable (${BINNAME} ${SRCS})
+install(TARGETS ${PROJECT_NAME}
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)

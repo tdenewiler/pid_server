@@ -1,0 +1,18 @@
+<package format="2">
+  <name>pid_server</name>
+  <version>0.0.0</version>
+  <description>
+    ROS server for performing PID loops.
+  </description>
+  <author>Thomas Denewiler</author>
+  <maintainer email="tdenewiler@gmail.com">Thomas Denewiler</maintainer>
+  <license>BSD</license>
+  <url>http://github.com/tdenewiler/os5000</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+</package>
