@@ -2,6 +2,4 @@
 
 ROS PID server.
 
-## Travis CI
-
-[![Travis-CI](https://api.travis-ci.org/tdenewiler/pid_server.svg?branch=master)](https://travis-ci.org/tdenewiler/pid_server/branches)
+![Build & Test](https://github.com/tdenewiler/pid_server/workflows/Build%20&%20Test/badge.svg)
