@@ -2,3 +2,4 @@ bin
 build
 srv_gen
 src/pid_server
+*.sw[op]
