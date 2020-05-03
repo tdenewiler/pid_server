@@ -91,7 +91,7 @@ jobs:
 
       - name: Statick markdown
         run: |
-          statick . --profile documentation.yaml
+          statick . --check --profile documentation.yaml
 
       - name: Build and Statick
         if: endsWith(matrix.container, 'melodic')
@@ -101,4 +101,4 @@ jobs:
           . devel/setup.bash
           mkdir statick-output
           cp src/pid_server/statick_config/rsc/_clang-format ~
-          statick src/pid_server --output-directory statick-output --user-paths src/pid_server/statick_config
+          statick src/pid_server --output-directory statick-output --check --user-paths src/pid_server/statick_config
