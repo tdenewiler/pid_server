@@ -41,7 +41,6 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y python$PYTHON_VERSION-pip
-          sudo apt install -y python-pip
           sudo apt install -y python3-pip
           sudo apt install -y python$PYTHON_VERSION-osrf-pycommon
           sudo apt install -y python$PYTHON_VERSION-catkin-tools
