@@ -11,12 +11,14 @@ jobs:
     strategy:
       matrix:
         container:
-          - image: 'ros:kinetic'
-            env:
-              ROS_DISTRO: kinetic
           - image: 'ros:melodic'
             env:
+              PYTHON_VERSION:
               ROS_DISTRO: melodic
+          - image: 'ros:noetic'
+            env:
+              PYTHON_VERSION: 3
+              ROS_DISTRO: noetic
 
     container: ${{ matrix.container }}
 
@@ -38,10 +40,12 @@ jobs:
       - name: Install ROS package dependencies
         run: |
           sudo apt update
+          sudo apt install -y python$PYTHON_VERSION-pip
           sudo apt install -y python-pip
           sudo apt install -y python3-pip
-          sudo apt install -y python-catkin-tools
-          python -m pip install --upgrade pip
+          sudo apt install -y python$PYTHON_VERSION-osrf-pycommon
+          sudo apt install -y python$PYTHON_VERSION-catkin-tools
+          python$PYTHON_VERSION -m pip install --upgrade pip
           python3 -m pip install --upgrade pip
 
       - name: Create workspace
@@ -71,10 +75,10 @@ jobs:
           sudo apt install -y libxml2
           sudo apt install -y libxml2-utils
           sudo apt install -y maven
-          sudo apt install -y python-catkin-lint
-          sudo apt install -y python-catkin-pkg
-          sudo apt install -y python-git
-          sudo apt install -y python-yapsy
+          sudo apt install -y python$PYTHON_VERSION-catkin-lint
+          sudo apt install -y python$PYTHON_VERSION-catkin-pkg
+          sudo apt install -y python$PYTHON_VERSION-git
+          sudo apt install -y python$PYTHON_VERSION-yapsy
           sudo apt install -y ros-$ROS_DISTRO-roslint
           sudo apt install -y uncrustify
 
