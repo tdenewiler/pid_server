@@ -98,7 +98,6 @@ jobs:
           statick . --check --profile documentation.yaml
 
       - name: Build and Statick
-        if: endsWith(matrix.container, 'melodic')
         run: |
           . /opt/ros/$ROS_DISTRO/setup.bash
           catkin build
