@@ -101,6 +101,5 @@ jobs:
           . /opt/ros/$ROS_DISTRO/setup.bash
           catkin build
           . devel/setup.bash
-          mkdir statick-output
-          cp src/pid_server/statick_config/rsc/_clang-format ~
+          cp src/pid_server/statick_config/rsc/.clang-format ~
           statick src/pid_server --output-directory statick-output --check --user-paths src/pid_server/statick_config
