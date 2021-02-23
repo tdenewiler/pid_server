@@ -1,6 +1,6 @@
 ---
 packages:
-  node_example:
+  pid_server:
     exceptions:
       file:
         # System headers
