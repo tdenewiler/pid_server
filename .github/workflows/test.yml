@@ -88,6 +88,7 @@ jobs:
           sudo apt install -y curl
           curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
           bash nodesource_setup.sh
+          rm nodesource_setup.sh
           sudo apt install -y nodejs
           sudo npm install -g n
           sudo n stable
@@ -97,10 +98,13 @@ jobs:
         run: |
           statick . --check --profile documentation.yaml --log info
 
-      - name: Build and Statick
+      - name: Build
         run: |
           . /opt/ros/$ROS_DISTRO/setup.bash
           catkin build
+
+      - name: Statick
+        run: |
           . devel/setup.bash
           cp src/pid_server/statick_config/rsc/.clang-format ~
           statick src/pid_server --output-directory statick-output --check --user-paths src/pid_server/statick_config --log info
