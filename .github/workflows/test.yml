@@ -94,7 +94,7 @@ jobs:
 
       - name: Statick markdown
         run: |
-          statick . --check --profile documentation.yaml
+          statick . --check --profile documentation.yaml --log info
 
       - name: Build and Statick
         run: |
@@ -102,4 +102,4 @@ jobs:
           catkin build
           . devel/setup.bash
           cp src/pid_server/statick_config/rsc/.clang-format ~
-          statick src/pid_server --output-directory statick-output --check --user-paths src/pid_server/statick_config
+          statick src/pid_server --output-directory statick-output --check --user-paths src/pid_server/statick_config --log info
